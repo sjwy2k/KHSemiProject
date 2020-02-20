@@ -13,6 +13,9 @@
 	<div id="container">
 		<header>
 			<h1>Hello MVC</h1>
+			
+			<h2>하하 깃 테스트! 내가 수정한 내용!! 마경호!</h2>
+			
 			<!-- 헤더 메뉴 추가 - 로그인 메뉴-->
 			<div class="login-container">
 				<form id="loginFrm" action="<%=request.getContextPath() %>/login" method="post" onsubmit="return fn_login_validate();">
