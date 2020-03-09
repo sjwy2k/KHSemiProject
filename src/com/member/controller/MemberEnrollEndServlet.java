@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.kh.common.encrypt.AESEncrypt;
 import com.member.model.service.MemberService;
 import com.member.model.vo.Member;
 
@@ -43,9 +44,19 @@ public class MemberEnrollEndServlet extends HttpServlet {
 		String userName=request.getParameter("userName");
 		String gender=request.getParameter("gender");
 		int age=Integer.parseInt(request.getParameter("age"));
-		String phone=request.getParameter("phone");
+		
+		//암호화 처리대상 phone, email, address
 		String email=request.getParameter("email");
+//		AESEncrypt.encrypt("암호화 이메일 : "+email);
+		email=AESEncrypt.encrypt(email);
+		
+		String phone=request.getParameter("phone");
+//		AESEncrypt.encrypt("암호화 전화 : "+phone);
+		phone=AESEncrypt.encrypt(phone);
+		
 		String address=request.getParameter("address");
+//		AESEncrypt.encrypt("암호화 주소 : "+address);
+		address=AESEncrypt.encrypt(address);
 		
 		//데이터가 복수일경우에는 배열로 받아옴
 		String[] hobby=request.getParameterValues("hobby");

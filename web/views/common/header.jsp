@@ -31,6 +31,7 @@
 	<div id="container">
 		<header>
 			<h1>Hello MVC</h1>
+			<!-- 헤더 메뉴 추가 - 로그인 메뉴-->
 			<div class="login-container">
 				<!-- 헤더 메뉴 추가 - 로그인 메뉴-->
 				<%if(loginMember==null) {%>

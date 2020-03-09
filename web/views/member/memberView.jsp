@@ -29,18 +29,6 @@
 				</td>
 			</tr>
 			<tr>
-				<th>패스워드</th>
-				<td>
-					<input type="password" name="password" id="password_" value="<%=m.getPassword() %>" required>
-				</td>
-			</tr>
-			<tr>
-				<th>패스워드확인</th>
-				<td>	
-					<input type="password" id="password_2" value="" required><br>
-				</td>
-			</tr>  
-			<tr>
 				<th>이름</th>
 				<td>	
 				<input type="text"  name="userName" id="userName" value="<%=m.getUsername() %>"  required><br>
@@ -101,14 +89,26 @@
 				</td>
 			</tr>
 		</table>
+		<input type="button" onclick="updatePassword()" value="비밀번호변경">
 		<input type="button" onclick="updateMember();" value="정보수정"/>
 		<input type="button" onclick="deleteMember();" value="탈퇴"/>
 	</form>
 </section>
 
 <script>
+	function updatePassword(){
+<%-- 	var url="<%=request.getContextPath()%>/member/changePassword";
+		var name="비밀번호 수정하기"
+		var option="width=500,height=500,top=100,left=200,location=no"
+		window.open(url, name, option); --%>
+		
+		let url="<%=request.getContextPath()%>/member/updatePassword?userId=<%=m.getUserId()%>";
+		let option="width=400px,height=210px";
+		
+		open(url,"updatePassword",option);
+	}
 	function update_validate(){
-		//regexp
+		//regexp이용해 유효성검증하기
 		return true;
 	}
 	function updateMember(){

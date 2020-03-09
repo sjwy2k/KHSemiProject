@@ -14,9 +14,15 @@
 			</td>
 		</tr>
 		<tr>
+			<th>이름</th>
+			<td>	
+			<input type="text"  name="userName" id="userName" required><br>
+			</td>
+		</tr>
+		<tr>
 			<th>패스워드</th>
 			<td>
-				<input type="password" name="password" id="password_" required><br>
+				<input type="password" name="password" id="password_" required>
 			</td>
 		</tr>
 		<tr>
@@ -25,12 +31,6 @@
 				<input type="password" id="password_2" required><br>
 			</td>
 		</tr>  
-		<tr>
-			<th>이름</th>
-			<td>	
-			<input type="text"  name="userName" id="userName" required><br>
-			</td>
-		</tr>
 		<tr>
 			<th>나이</th>
 			<td>	

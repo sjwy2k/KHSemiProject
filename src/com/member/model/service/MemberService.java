@@ -79,5 +79,17 @@ public class MemberService {
 		return result;
 	}
 
+	public int updatePassword(String userId, String pw) {
+		Connection conn=getConnection();
+		int result=dao.updatePassword(conn,userId,pw);
+		if(result>0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+
 
 }
