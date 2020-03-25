@@ -1,7 +1,7 @@
 
 //안ㄴ여핫에ㅛ!
 //한지현 참여
-package kh.common;
+package com.kh.common;
 
 import java.io.FileReader;
 import java.sql.Connection;

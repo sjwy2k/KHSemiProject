@@ -105,4 +105,18 @@ section#enroll-container table{margin:0 auto;}
 section#enroll-container table th {padding:0 10px; text-align:right;}
 section#enroll-container table td {padding:0 10px; text-align:left;}
 
+/*#css추가*/
+ul.main-nav li span.animate_line{
+	position:absolute;
+	left:0;
+	bottom:0;
+	width:0;
+	height:0;
+	background-color:#FCE72E;
+	transition:.2s;
+}
+ul.main-nav li:hover span.animate_line{
+	width:100%;
+}
+
 

@@ -85,7 +85,7 @@ public class MemberEnrollEndServlet extends HttpServlet {
 		request.setAttribute("msg", msg);
 		request.setAttribute("loc", loc);
 		
-		RequestDispatcher rd=request.getRequestDispatcher("views/common/msg.jsp");//메인화면으로 이동
+		RequestDispatcher rd=request.getRequestDispatcher("/views/common/msg.jsp");//메인화면으로 이동
 		rd.forward(request, response);
 		
 		

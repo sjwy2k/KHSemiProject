@@ -1,6 +1,6 @@
 package com.member.model.dao;
 
-import static kh.common.JDBCTemplate.close;
+import static com.kh.common.JDBCTemplate.close;
 
 import java.io.FileReader;
 import java.io.IOException;

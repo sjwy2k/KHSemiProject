@@ -10,7 +10,10 @@
 			<td>
 				<input type="text" placeholder="4글자이상" name="userId" id="userId_" required>
 				<!-- 아이디 중복체크하기 -->
-				<input type="button" value="중복검사" onclick="checkIdDuplicated();" target="_blank">
+<!-- 				<input type="button" value="중복검사" onclick="checkIdDuplicated();" target="_blank"> -->
+				<input type="button" onclick="ajaxCheckIdDuplicate();" value="중복검사">
+				<div id="result"></div>
+				
 			</td>
 		</tr>
 		<tr>
@@ -79,6 +82,33 @@
 	<input type="reset" value="취소">
     </form>
 	<script>
+	//ajax 아이디 중복검사
+	function ajaxCheckIdDuplicate(){
+		var userId=$("#userId_").val().trim();
+		console.log(userId);
+		$.ajax({
+			url:"<%=request.getContextPath()%>/ajaxCheckIdDuplicate",
+			type:"post",
+			data:{"userId":userId},
+			dataType:"json",
+			success:function(data){
+				console.log(data);
+				console.log(data['userId']);
+				console.log(data['isUsable']);
+				if(data['userId']==""||data['isUsable']==false){
+					$("#result").empty();
+					if(data['userId']=="") $("#result").append($("<span>").html("아이디를 입력하세요"));
+					else $("#result").append($("<span>").html(data['userId']+"은/는 올바른 아이디가 아닙니다"));
+				} else if(data['isUsable']==true){
+					$("#result").empty();
+					$("#result").append($("<span>").html(data['userId']+"은/는 올바른 아이디 입니다."));
+				}
+			}
+		})
+	}
+	
+	
+	
 	//아이디 중복검사
 	function checkIdDuplicated(){
 		var userId=$('#userId_').val().trim();
@@ -110,10 +140,10 @@
 				alert('패스워드가 일치하지 않습니다.');
 				$('password_').val('');
 				$('password_2').val('');
-				$('password_1').focus();
+				$('password_').focus();
 			}
 		})
 	});
-	</script>
+		</script>
 </section>
 <%@ include file="/views/common/footer.jsp" %>

@@ -11,12 +11,15 @@ import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.Base64;
+import java.util.List;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
+
+import com.member.model.vo.Member;
 
 public class AESEncrypt {
 	//AES방식으로 양방향 암호화하는 객체
@@ -103,12 +106,13 @@ public class AESEncrypt {
 			enStr=cipher.doFinal(str.getBytes());
 			
 		}catch(Exception e) {
-			e.printStackTrace();
+//			e.printStackTrace();
 			//NoSuchAlgorithmException : 해당하는 알고리즘이 없을 때
 			//NoSuchPaddingException : 암호화 할 때
 			//IllegalBlockSizeException : 
 			//BadPaddingException :
 			//InvalidKeyException : 키가 잘못되었을 때
+			return str;
 		}
 		//암호화 마친 바이트 스트링을 String으로 변환(Base64)
 		//enStr이 null이 아니면 변환하고 enStr이 null이면 str그대로 반환
@@ -126,8 +130,21 @@ public class AESEncrypt {
 			byte[] decodeStr=Base64.getDecoder().decode(str.getBytes());
 			deStr=cipher.doFinal(decodeStr);
 		}catch(Exception e) {
-			e.printStackTrace();
+//			e.printStackTrace();
+			return str;
 		}
 		return new String(deStr,"UTF-8");
+	}
+	
+	public static void changeDecrypt(List<Member> list){
+		for(Member m:list) {
+			try {
+				m.setEmail(AESEncrypt.decrypt(m.getEmail()));
+				m.setPhone(AESEncrypt.decrypt(m.getPhone()));
+				m.setAddress(AESEncrypt.decrypt(m.getAddress()));
+			}catch(UnsupportedEncodingException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 }

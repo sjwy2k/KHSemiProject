@@ -1,13 +1,14 @@
 package com.member.model.service;
 
+import static com.kh.common.JDBCTemplate.close;
+import static com.kh.common.JDBCTemplate.commit;
+import static com.kh.common.JDBCTemplate.getConnection;
+import static com.kh.common.JDBCTemplate.rollback;
+
 import java.sql.Connection;
 
 import com.member.model.dao.MemberDao;
 import com.member.model.vo.Member;
-import static kh.common.JDBCTemplate.getConnection;
-import static kh.common.JDBCTemplate.close;
-import static kh.common.JDBCTemplate.commit;
-import static kh.common.JDBCTemplate.rollback;
 
 public class MemberService {
 
