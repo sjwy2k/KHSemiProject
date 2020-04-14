@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" 
 	pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <%@ page import="java.util.List, com.member.model.vo.Member" %>
 <%
 	List<Member> list=(List)request.getAttribute("list");
@@ -105,7 +109,20 @@
 				</tr>
 			</thead>
 			<tbody>
-			<%for(Member m:list){ %>
+			<c:forEach items="${list }" var="m" varStatus="member">
+				<tr>
+					<td>${m.userId }</td>
+					<td>${m.username }</td>
+					<td>${m.gender }</td>
+					<td>${m.age }</td>
+					<td>${m.email }</td>
+					<td>${m.phone }</td>
+					<td>${m.address }</td>
+					<td>${m.hobby }</td>
+					<td><fmt:formatDate value="${m.enrollDate }" pattern="yyyy년 MM월  dd일" /></td>
+				</tr>
+			</c:forEach>
+			<%-- <%for(Member m:list){ %>
 				<tr>
 					<td>
 						<%=m.getUserId() %>
@@ -135,7 +152,7 @@
 						<%=m.getEnrollDate() %>
 					</td>
 				</tr>
-			<%} %>
+			<%} %> --%>
 			</tbody>
 		</table>
 		<div id="pageBar">
